@@ -15,6 +15,8 @@ const defaultRoutes = [
   },
 ];
 
+router.get('/', (req, res) => res.render('index.ejs'));
+
 defaultRoutes.forEach((route) => {
   router.use(route.path, route.route);
 });

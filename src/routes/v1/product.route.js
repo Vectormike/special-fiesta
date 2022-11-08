@@ -5,6 +5,7 @@ const productController = require('../../controllers/product.controller');
 
 const router = express.Router();
 
+router.get('/home', (req, res) => res.render('index.ejs'));
 router.route('/').get(validate(productValidation.listProducts), productController.listProducts);
 router.route('/').post(validate(productValidation.createProduct), productController.createProduct);
 router.route('/:productId').patch(validate(productValidation.editProduct), productController.editProduct);
