@@ -5,7 +5,7 @@
 Clone the repo:
 
 ```bash
-git clone https://github.com/hagopj13/node-express-boilerplate.git spiralyze
+git clone https://github.com/ spiralyze
 cd spiralyze
 ```
 
