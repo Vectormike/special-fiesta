@@ -35,8 +35,8 @@ $(document).ready(function () {
           orderable: false,
           data: null,
           render(data, type, row, meta) {
-            return `<button type='button' class='btn btn-success btn-update mr-2' data-id=${data._id}>Update</button>
-                    <button type='button' class='btn btn-danger btn-delete' data-id=${data._id}>Delete</button>`;
+            return `<button type='button' class='btn btn-success btn-update mr-2' data-id=${data.productID}>Update</button>
+                    <button type='button' class='btn btn-danger btn-delete' data-id=${data.productID}>Delete</button>`;
           },
         },
       ],
@@ -120,17 +120,16 @@ $(document).ready(function () {
    * Update product
    */
   $('#btnUpdateProduct').click(function () {
-    const name = $('#productName').val();
+    const productName = $('#productName').val();
     const price = $('#productPrice').val();
     const data = {};
-    if (name) data.name = name;
+    if (productName) data.productName = productName;
     if (price) data.price = price;
     const id = $('#btnUpdateProduct').data('id');
-    console.log(id);
     $.ajax({
-      url: `http://localhost:3000/spiralyze/product/:${id}`,
+      url: `/spiralyze/product/${id}`,
       type: 'PATCH',
-      data: { name, price },
+      data: { productName, price },
       success(result) {
         $('#errorMessage').html('');
         $('#errorAlert').hide();
@@ -161,8 +160,9 @@ $(document).ready(function () {
     }).then((willDelete) => {
       if (willDelete) {
         const id = $(this).data('id');
+        console.log('Instancexnxn', id);
         $.ajax({
-          url: `/product/${id}`,
+          url: `/spiralyze/product/${id}`,
           type: 'DELETE',
           success(result) {
             swal({
