@@ -79,7 +79,7 @@ $(document).ready(function () {
         $('#productName').val('');
         $('#productPrice').val('');
         $('#productModal').modal('hide');
-        swal('Success', 'Prodcut added successfully', 'success');
+        swal('Success', 'Product added successfully', 'success');
         loadData();
       },
       error(jqXHR, textStatus, errorThrown) {
@@ -126,7 +126,7 @@ $(document).ready(function () {
     if (name) data.name = name;
     if (price) data.price = price;
     const id = $('#btnUpdateProduct').data('id');
-
+    console.log(id);
     $.ajax({
       url: `http://localhost:3000/spiralyze/product/:${id}`,
       type: 'PATCH',
